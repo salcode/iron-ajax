@@ -1,6 +1,6 @@
 <?php
 if ( !class_exists( 'Fe_Ajx' ) ) { class Fe_Ajx {
-	pubic $instance_id;
+	public $instance_id;
 
 	public function __construct( $args=array() ) {
 		$args = array_merge( self::default_args(), $args );
