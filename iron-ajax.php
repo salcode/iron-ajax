@@ -18,5 +18,8 @@ if ( ! defined( 'WPINC' ) ) {
 include( 'fe-ajax/fe-ajx-class.php' );
 
 new Fe_Ajx( array(
-	'instance_id' => 'fe-ajax-example1',
+	'instance_id' => 'Iron Ajax',
+) );
+new Fe_Ajx( array(
+	'instance_id' => 'SAL fE ajax Ex 2',
 ) );
