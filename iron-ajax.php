@@ -15,4 +15,8 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 
-include( 'fe-ajx-class.php' );
+include( 'fe-ajax/fe-ajx-class.php' );
+
+new Fe_Ajx( array(
+	'instance_id' => 'fe-ajax-example1',
+) );
