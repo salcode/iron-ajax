@@ -11,6 +11,7 @@
 	<p>
 		Processing <span id="fe-data-process-counter">0</span> out of <span id="fe-data-process-total">many</span>
 	</p>
+	Modify the line above, hide/reveal with JS?
 
 	<?php do_action( 'fe_ajx_template_after', $instance_id ); ?>
 
