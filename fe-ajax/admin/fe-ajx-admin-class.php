@@ -76,9 +76,14 @@ class Fe_Ajx_Admin {
 		);
 	}
 
-	public static function hook_enqueue_assets( $hook_suffix ) {
+	public function hook_enqueue_assets( $hook_suffix ) {
 		// Unfortunately we can't just enqueue our scripts here - it's too early. So register against the proper action hook to do it
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
+		error_log( $this->instance_id );
+		$data = array(
+			'instance_id' => $this->instance_id,
+		);
+		wp_localize_script( 'fe-ajx-scripts', 'feAjx', $data );
 	}
 
 	public static function enqueue_assets( $hook_suffix ) {
