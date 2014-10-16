@@ -8,7 +8,7 @@ if ( !class_exists( 'Fe_Ajx' ) ) { class Fe_Ajx {
 		$this->instance_id = $args['instance_id'];
 
 		if ( is_admin() ) {
-			error_log( 'is_admin' );
+			//error_log( 'is_admin' );
 			if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
 				$this->construct_admin_not_ajax( $this->instance_id );
 			} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
