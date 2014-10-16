@@ -1,18 +1,20 @@
 jQuery(document).ready( function($) {
 
 	// test
-	var itemTotal,
-		itemIndex = 0,
+	var itemTotal, // set in AjaxInitSuccess
+		itemIndex = 0, // overriden in AjaxInitSuccess
+		batchSize = 1, // overridden in AjaxInitSuccess
 		itemsBeingProcessed = [],
 		itemsCompleted = [],
 		itemsFailed = [],
-		batchSize = 1, // this is overridden in AjaxInitSuccess
 		ajaxUrl = ajaxurl,
 		$domStatusCounter;
 
 	$('#fe-data-process-start-button').on( 'click', function(e) {
 		var data = {
-			'action': 'fe_data_process_init'
+			'action': 'fe_ajx_action',
+			'instance_id': feAjx.instance_id,
+			'step': 'init'
 		};
 		jQuery.ajax( {
 			'dataType': "json",
