@@ -18,14 +18,16 @@ if ( !class_exists( 'Fe_Ajx' ) ) { class Fe_Ajx {
 	}
 
 	private function construct_admin_not_ajax() {
-		error_log( 'construct for admin NOT ajax' );
+		//error_log( 'construct for admin NOT ajax' );
 		require_once( 'admin/fe-ajx-admin-class.php' );
 		new Fe_Ajx_Admin( $this->instance_id );
 
 	}
 
 	private function construct_ajax() {
-		error_log( 'construct for ajax' );
+		//error_log( 'construct for ajax' );
+		require_once( 'ajax/fe-ajx-ajax-class.php' );
+		new Fe_Ajx_Ajax( $this->instance_id );
 	}
 
 
