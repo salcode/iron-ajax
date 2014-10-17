@@ -20,9 +20,6 @@ class Fe_Ajx_Ajax {
 	public function ajax_action() {
 		$instance_id = self::get_post_value( 'instance_id' );
 		if ( !$instance_id || $instance_id !== $this->instance_id ) {
-			//error_log( '$this->instance_id=' . print_r( $this->instance_id, true ) );
-			//error_log( '$instance_id=' . print_r( $instance_id, true ) );
-			//error_log( 'instance_id does not match' );
 			return;
 		}
 		$step_slug = self::get_post_value( 'step' );

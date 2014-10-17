@@ -14,7 +14,6 @@ class Fe_Ajx_Ajax_Steps {
 
 	public function init() {
 		// init code
-		error_log( 'method init ' . $this->instance_id );
 		$entries_count = apply_filters( "fe_ajx_{$this->instance_slug}_entries_count", 100 );
 		$batch_size    = apply_filters( "fe_ajx_{$this->instance_slug}_batch_size",    20  );
 		$index_start   = apply_filters( "fe_ajx_{$this->instance_slug}_index_start",   0   );

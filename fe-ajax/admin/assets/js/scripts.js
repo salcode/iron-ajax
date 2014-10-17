@@ -25,12 +25,10 @@ jQuery(document).ready( function($) {
 			'success':  ajaxInitSuccess
 		} );
 
-		console.log( 'process start button clicked' );
 		e.preventDefault();
 	});
 
 	function ajaxInitSuccess( data, textStatus, jqXHR ) {
-		console.log( data );
 		itemTotal = data.entries_count;
 		batchSize = data.batch_size;
 		itemIndex = data.index_start;
@@ -41,10 +39,8 @@ jQuery(document).ready( function($) {
 	}
 
 	function ajaxBatchSuccess( data, textStatus, jqXHR ) {
-		console.log( 'ajaxBatchSuccess' );
-		console.log( data );
+		var lastIndex;
 		$.each( data.results, function( key, value ) {
-			console.log( key + ' ' + value );
 			if ( 'success' === value ) {
 				itemsCompleted.push( key );
 			} else if ( 'failure' === value ) {
@@ -108,12 +104,10 @@ jQuery(document).ready( function($) {
 	}
 
 	function ajaxCompleteSuccess( data, textStatus, jqXHR ) {
-		console.log( data );
-		console.log( "Completed" );
+		//console.log( "Completed" );
 	}
 
 	function complete() {
-		console.log( 'complete() done processing' );
 
 		var data = {
 			'action': 'fe_ajx_action',
