@@ -15,7 +15,7 @@ class Fe_Ajx_Admin {
 		// menu_hookname to only enqueue assets on this page
 		add_action( 'admin_menu', array( $this, 'add_menu' ) );
 
-		add_action( 'fe_ajx_template_after_' . $this->instance_slug,
+		add_action( 'fe_ajx_' . $this->instance_slug . '_template_after',
 			array( __CLASS__, 'display_developer_hooks' ),
 			10, 2
 		);

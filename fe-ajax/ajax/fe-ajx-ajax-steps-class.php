@@ -15,11 +15,11 @@ class Fe_Ajx_Ajax_Steps {
 	public function init() {
 		// init code
 		error_log( 'method init ' . $this->instance_id );
-		$entries_count = apply_filters( 'fe_ajx_entries_count_' . $this->instance_slug, 100 );
-		$batch_size    = apply_filters( 'fe_ajx_batch_size_' . $this->instance_slug,    20  );
-		$index_start   = apply_filters( 'fe_ajx_index_start_' . $this->instance_slug,   0   );
+		$entries_count = apply_filters( 'fe_ajx_' . $this->instance_slug . '_entries_count', 100 );
+		$batch_size    = apply_filters( 'fe_ajx_' . $this->instance_slug . '_batch_size',    20  );
+		$index_start   = apply_filters( 'fe_ajx_' . $this->instance_slug . '_index_start',   0   );
 
-		return apply_filters( 'fe_ajx_init_data_' . $this->instance_slug,
+		return apply_filters( 'fe_ajx_' . $this->instance_slug . '_init_data',
 			array(
 				'entries_count'    => $entries_count,
 				'batch_size'       => $batch_size,
@@ -31,7 +31,7 @@ class Fe_Ajx_Ajax_Steps {
 	public function process( $index ) {
 		error_log( 'method process' );
 		// process code
-		return apply_filters( 'fe_ajx_process_result_' . $this->instance_slug,
+		return apply_filters( 'fe_ajx_' . $this->instance_slug . '_process_result',
 			array(
 				'success' => true,
 				'index'   => 0,
@@ -42,7 +42,7 @@ class Fe_Ajx_Ajax_Steps {
 
 	public function end() {
 		error_log( 'method end' );
-		return apply_filters( 'fe_ajx_end_' . $this->instance_slug,
+		return apply_filters( 'fe_ajx_' . $this->instance_slug . '_end',
 			array(
 				'persist' => array(),
 			)
