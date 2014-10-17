@@ -15,34 +15,33 @@ class Fe_Ajx_Ajax_Steps {
 	public function init() {
 		// init code
 		error_log( 'method init ' . $this->instance_id );
-		$entries_count = apply_filters( 'fe_ajx_' . $this->instance_slug . '_entries_count', 100 );
-		$batch_size    = apply_filters( 'fe_ajx_' . $this->instance_slug . '_batch_size',    20  );
-		$index_start   = apply_filters( 'fe_ajx_' . $this->instance_slug . '_index_start',   0   );
+		$entries_count = apply_filters( "fe_ajx_{$this->instance_slug}_entries_count", 100 );
+		$batch_size    = apply_filters( "fe_ajx_{$this->instance_slug}_batch_size",    20  );
+		$index_start   = apply_filters( "fe_ajx_{$this->instance_slug}_index_start",   0   );
 
-		return apply_filters( 'fe_ajx_' . $this->instance_slug . '_init_data',
+		return apply_filters( "fe_ajx_{$this->instance_slug}_init",
 			array(
 				'entries_count'    => $entries_count,
 				'batch_size'       => $batch_size,
-				'item_index_start' => $index_start,
+				'index_start' => $index_start,
 			)
 		);
 	}
 
 	public function process( $index ) {
-		error_log( 'method process' );
 		// process code
-		return apply_filters( 'fe_ajx_' . $this->instance_slug . '_process_result',
+		return apply_filters( "fe_ajx_{$this->instance_slug}_process",
 			array(
 				'success' => true,
-				'index'   => 0,
+				'index'   => $index,
 				'persist' => array(),
-			)
+			),
+			$index
 		);
 	}
 
 	public function end() {
-		error_log( 'method end' );
-		return apply_filters( 'fe_ajx_' . $this->instance_slug . '_end',
+		return apply_filters( "fe_ajx_{$this->instance_slug}_end",
 			array(
 				'persist' => array(),
 			)

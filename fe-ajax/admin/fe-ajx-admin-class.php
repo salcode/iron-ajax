@@ -9,7 +9,7 @@ class Fe_Ajx_Admin {
 		$this->instance_id = $instance_id;
 		$this->instance_slug = Fe_Ajx::slugify( $this->instance_id );
 		self::register_assets();
-		$this->args = apply_filters( 'fe_ajx_admin', $this->args( $instance_id ), $instance_id );
+		$this->args = apply_filters( "fe_ajx_{$instance_slug}_admin_args", $this->args( $instance_id ) );
 
 		// in method add_menu, we also hook into the generated
 		// menu_hookname to only enqueue assets on this page
@@ -98,5 +98,4 @@ class Fe_Ajx_Admin {
 		wp_enqueue_style( 'fe-ajx-jquery-ui-progressbar' );
 		wp_enqueue_script( 'fe-ajx-scripts' );
 	}
-
 }
