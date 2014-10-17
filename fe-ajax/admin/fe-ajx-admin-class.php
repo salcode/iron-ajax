@@ -15,9 +15,11 @@ class Fe_Ajx_Admin {
 		// menu_hookname to only enqueue assets on this page
 		add_action( 'admin_menu', array( $this, 'add_menu' ) );
 
+		add_action( 'fe_ajx_template_after_' . $this->instance_slug,
+			array( __CLASS__, 'display_developer_hooks' ),
+			10, 2
+		);
 	}
-
-
 
 	public function add_menu() {
 		if ( $this->args['parent_slug'] ) {
@@ -44,23 +46,29 @@ class Fe_Ajx_Admin {
 		add_action( 'load-' . $menu_hookname, array( $this, 'hook_enqueue_assets' ) );
 	}
 
-	public function load_view() {
-		$instance_id = $this->instance_id;
-		include( 'views/admin.php' );
-	}
-
 	public function args( $instance_id ) {
 		return array(
 			'parent_slug' => 'tools.php', // false, for a top level menu item
 			'page_title'  => $instance_id,
 			'menu_title' => $instance_id,
 			'capability' => 'manage_options',
-			'menu_slug' => 'fe-ajx-' . sanitize_title( $instance_id ),
+			'menu_slug' => 'fe-ajx-' . $this->instance_slug,
 			'function' => array( $this, 'load_view' ),
 			'icon_url' => '',
 			'position' => null,
 		);
 	}
+
+	public function load_view() {
+		$instance_id = $this->instance_id;
+		$instance_slug = $this->instance_slug;
+		include( 'views/admin.php' );
+	}
+
+	public static function display_developer_hooks( $instance_id, $instance_slug ) {
+		include( 'views/developer-information.php' );
+	}
+
 
 	public static function register_assets() {
 		wp_register_style(

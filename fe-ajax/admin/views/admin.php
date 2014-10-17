@@ -13,6 +13,9 @@
 	</p>
 	Modify the line above, hide/reveal with JS?
 
-	<?php do_action( 'fe_ajx_template_after', $instance_id ); ?>
+	<?php do_action( 'fe_ajx_template_after_' . $instance_slug,
+		$instance_id,
+		$instance_slug
+	); ?>
 
 </div>
