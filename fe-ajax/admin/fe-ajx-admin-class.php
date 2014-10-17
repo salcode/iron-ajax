@@ -3,10 +3,11 @@
 if ( ! defined( 'WPINC' ) ) { die; }
 
 class Fe_Ajx_Admin {
-	public $args, $instance_id;
+	public $args, $instance_id, $instance_slug;
 
 	public function __construct( $instance_id ) {
 		$this->instance_id = $instance_id;
+		$this->instance_slug = Fe_Ajx::slugify( $this->instance_id );
 		self::register_assets();
 		$this->args = apply_filters( 'fe_ajx_admin', $this->args( $instance_id ), $instance_id );
 

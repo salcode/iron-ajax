@@ -47,5 +47,19 @@ if ( !class_exists( 'Fe_Ajx' ) ) { class Fe_Ajx {
 		}
 	}
 
+	/**
+	 * Create a slug version of the string
+	 *
+	 * This is particularly useful for creating hooks
+	 * based on the 'instance_id' in this project.
+	 * Invalid characters for a hook are replaced with _s
+	 */
+	public static function slugify( $string ) {
+		return str_replace(
+			'-', '_',
+			sanitize_title_with_dashes( $string, null, 'save' )
+		);
+	}
+
 
 } }

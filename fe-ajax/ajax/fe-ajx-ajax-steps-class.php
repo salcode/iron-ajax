@@ -9,7 +9,7 @@ class Fe_Ajx_Ajax_Steps {
 	public $instance_id, $instance_slug;
 	public function __construct( $instance_id ) {
 		$this->instance_id = $instance_id;
-		$this->instance_slug = sanitize_title( $instance_id );
+		$this->instance_slug = Fe_Ajx::slugify( $instance_id );
 	}
 
 	public function init() {
