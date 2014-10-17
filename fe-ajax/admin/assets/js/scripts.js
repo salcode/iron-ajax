@@ -31,9 +31,9 @@ jQuery(document).ready( function($) {
 
 	function ajaxInitSuccess( data, textStatus, jqXHR ) {
 		console.log( data );
-		itemTotal = data.total_entries;
+		itemTotal = data.entries_count;
 		batchSize = data.batch_size;
-		itemIndex = data.item_index_start;
+		itemIndex = data.index_start;
 
 		$('#fe-data-process-progressbar').progressbar({ max: itemTotal, value: 0 });
 		updateTotal( itemTotal );
@@ -77,11 +77,11 @@ jQuery(document).ready( function($) {
 		}
 
 		data = {
-			'action': 'fe_data_process_batch',
+			'action': 'fe_ajx_action',
+			'step': 'process',
+			'instance_id': feAjx.instance_id,
 			'itemsBeingProcessed': itemsBeingProcessed
 		};
-		console.log( itemsBeingProcessed );
-		console.log( data );
 
 		jQuery.ajax( {
 			'dataType': "json",
@@ -116,7 +116,9 @@ jQuery(document).ready( function($) {
 		console.log( 'complete() done processing' );
 
 		var data = {
-			'action': 'fe_data_process_complete'
+			'action': 'fe_ajx_action',
+			'step': 'process',
+			'instance_id': feAjx.instance_id
 		};
 
 		jQuery.ajax( {
