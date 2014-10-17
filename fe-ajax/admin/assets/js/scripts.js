@@ -8,6 +8,7 @@ jQuery(document).ready( function($) {
 		itemsCompleted = [],
 		itemsFailed = [],
 		ajaxUrl = ajaxurl,
+		persist, // variable to maintain state between calls
 		$domStatusCounter;
 
 	$('#fe-data-process-start-button').on( 'click', function(e) {
@@ -46,10 +47,13 @@ jQuery(document).ready( function($) {
 			} else if ( 'failure' === value ) {
 				itemsFailed.push( key );
 			}
+			lastIndex = key;
 		} );
 
 		updateStatus( itemIndex );
 		itemsBeingProcessed = [];
+
+		persist = data.results[ lastIndex ]['persist'];
 
 		processNext();
 	}
@@ -71,11 +75,11 @@ jQuery(document).ready( function($) {
 			complete();
 			return;
 		}
-
 		data = {
 			'action': 'fe_ajx_action',
-			'step': 'process',
+			'step': 'batchprocess',
 			'instance_id': feAjx.instance_id,
+			'persist': persist,
 			'itemsBeingProcessed': itemsBeingProcessed
 		};
 
@@ -111,7 +115,7 @@ jQuery(document).ready( function($) {
 
 		var data = {
 			'action': 'fe_ajx_action',
-			'step': 'process',
+			'step': 'end',
 			'instance_id': feAjx.instance_id
 		};
 

@@ -26,38 +26,11 @@ class Fe_Ajx_Ajax {
 
 		require_once( 'fe-ajx-ajax-steps-class.php' );
 
-		if ( 'process' === $step_slug ) {
-			return $this->batch_process();
-		}
-
 		$steps = new Fe_Ajx_Ajax_Steps( $instance_id );
 
 		if ( method_exists( $steps, $step_slug ) ) {
 			echo json_encode( $steps->$step_slug() );
 		}
-		die();
-	}
-
-	public function batch_process() {
-		$steps = new Fe_Ajx_Ajax_Steps( $this->instance_id );
-
-		$results = array();
-		if ( !isset( $_POST['itemsBeingProcessed'] ) ) {
-			echo json_encode( array(
-				'error' => 'itemsBeingProcessed is NOT an array'
-			) );
-			die();
-		}
-
-		foreach ( $_POST['itemsBeingProcessed'] as $index ) {
-			//error_log( $item );
-			$results[$index] = $steps->process( $index );
-		}
-		$data = array(
-			'results' => $results
-		);
-
-		echo json_encode( $data );
 		die();
 	}
 
