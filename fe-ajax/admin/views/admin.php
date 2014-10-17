@@ -1,5 +1,5 @@
 <div class="wrap">
-	<h2><?php echo apply_filters( 'fe_ajx_template_h2', $this->args['page_title'], $instance_id ); ?></h2>
+	<h2><?php echo apply_filters( "fe_ajx_{$instance_slug}_template_heading", $this->args['page_title'], $instance_id ); ?></h2>
 
 	<?php do_action( 'fe_ajx_template_before', $instance_id ); ?>
 
