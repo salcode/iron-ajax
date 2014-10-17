@@ -130,6 +130,4 @@ jQuery(document).ready( function($) {
 
 	}
 
-
-
 });
