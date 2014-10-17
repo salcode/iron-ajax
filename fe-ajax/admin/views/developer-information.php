@@ -14,7 +14,8 @@
 		<tr class="<?php echo ( $alt++%2 ? 'alternate' : '' ); ?>">
 			<td><pre>fe_ajx_<?php echo $instance_slug ?>_process</pre></td>
 			<td>
-				Filter to modify the returned object when an item is processed.  Default is
+				Filter to modify the returned object when an item is processed.
+				This hook is where you want to add your custom processing code.  Default is
 <pre>
 array(
 	'success' => true,
@@ -22,6 +23,7 @@ array(
 	'persist' => array(),
 )
 </pre>
+				<h4>Example</h4>
 			</td>
 		</tr>
 
@@ -47,7 +49,19 @@ function examp_iajx_entries_count( $count ) {
 		<tr class="<?php echo ( $alt++%2 ? 'alternate' : '' ); ?>">
 			<td><pre>fe_ajx_<?php echo $instance_slug ?>_batch_size</pre></td>
 			<td>
-				Filter to modify the number of items to be processed. Default is <b>20</b>
+				Filter to modify the number of items to be processed in each AJAX call. Default is <b>20</b>.
+				Reduce this number if you are experiencing timeouts
+				<h4>Example</h4>
+<pre>
+add_filter(
+	'fe_ajx_<?php echo $instance_slug; ?>_batch_size',
+	'examp_iajx_batch_size'
+);
+function examp_iajx_batch_size( $size ) {
+	return 2;
+}
+
+</pre>
 			</td>
 		</tr>
 
@@ -102,7 +116,7 @@ add_filter(
 	'fe_ajx_<?php echo $instance_slug; ?>_ajax_template_heading',
 	'examp_iajx_templ_head'
 );
-function examp_iajx_templ_head() {
+function examp_iajx_templ_head( $title ) {
 	return 'This is a New Heading';
 }
 </pre>
