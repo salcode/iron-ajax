@@ -49,7 +49,7 @@ if ( !class_exists( 'Fe_Ajx' ) ) { class Fe_Ajx {
 	 *
 	 * This is particularly useful for creating hooks
 	 * based on the 'instance_id' in this project.
-	 * Invalid characters for a hook are replaced with _s
+	 * Invalid characters for a hook are replaced with _
 	 */
 	public static function slugify( $string ) {
 		return str_replace(
