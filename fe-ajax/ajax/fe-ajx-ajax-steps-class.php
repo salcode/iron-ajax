@@ -28,7 +28,7 @@ class Fe_Ajx_Ajax_Steps {
 	}
 
 	public function process( $index, $persist = array() ) {
-		// process code
+
 		return apply_filters( "fe_ajx_{$this->instance_slug}_process",
 			array(
 				'success' => true,
@@ -53,7 +53,7 @@ class Fe_Ajx_Ajax_Steps {
 			die();
 		}
 
-		$persist = Fe_Ajx_Ajax::get_post_value( 'persist' );
+		$persist = Fe_Ajx_Ajax::get_post_value( 'persist', array() );
 
 		foreach ( $items_being_process as $index ) {
 			$results[$index] = $this->process( $index, $persist );

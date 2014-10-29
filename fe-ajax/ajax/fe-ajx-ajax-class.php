@@ -37,9 +37,9 @@ class Fe_Ajx_Ajax {
 		die();
 	}
 
-	public static function get_post_value( $key ) {
+	public static function get_post_value( $key, $default = false ) {
 		if ( !isset( $_POST[ $key ] ) ) {
-			return false;
+			return $default;
 		}
 		return $_POST[ $key ];
 	}
