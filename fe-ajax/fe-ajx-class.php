@@ -9,7 +9,7 @@ if ( !class_exists( 'Fe_Ajx' ) ) { class Fe_Ajx {
 
 		if ( is_admin() ) {
 			if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
-				$this->construct_admin_not_ajax( $this->instance_id );
+				$this->construct_admin_not_ajax();
 			} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 				$this->construct_ajax();
 			}
