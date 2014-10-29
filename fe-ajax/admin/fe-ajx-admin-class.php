@@ -98,6 +98,7 @@ class Fe_Ajx_Admin {
 		wp_enqueue_script( 'fe-ajx-scripts' );
 		$data = array(
 			'instance_id' => $this->instance_id,
+			'nonce' => wp_create_nonce( 'fe-ajx' ),
 		);
 		wp_localize_script( 'fe-ajx-scripts', 'feAjx', $data );
 

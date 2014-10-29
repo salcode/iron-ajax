@@ -15,6 +15,7 @@ jQuery(document).ready( function($) {
 		var data = {
 			'action': 'fe_ajx_action',
 			'instance_id': feAjx.instance_id,
+			'nonce': feAjx.nonce,
 			'step': 'init'
 		};
 		jQuery.ajax( {
@@ -23,6 +24,7 @@ jQuery(document).ready( function($) {
 			'type':     'post',
 			'url':      ajaxUrl,
 			'context':  this,
+			'nonce': feAjx.nonce,
 			'success':  ajaxInitSuccess
 		} );
 
@@ -80,6 +82,7 @@ jQuery(document).ready( function($) {
 			'step': 'batchprocess',
 			'instance_id': feAjx.instance_id,
 			'persist': persist,
+			'nonce': feAjx.nonce,
 			'itemsBeingProcessed': itemsBeingProcessed
 		};
 
@@ -89,6 +92,7 @@ jQuery(document).ready( function($) {
 			'type':     'post',
 			'url':      ajaxUrl,
 			'context':  this,
+			'nonce': feAjx.nonce,
 			'success':  ajaxBatchSuccess
 		});
 
@@ -116,6 +120,7 @@ jQuery(document).ready( function($) {
 		var data = {
 			'action': 'fe_ajx_action',
 			'step': 'end',
+			'nonce': feAjx.nonce,
 			'instance_id': feAjx.instance_id
 		};
 

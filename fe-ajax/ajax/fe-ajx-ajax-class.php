@@ -22,6 +22,9 @@ class Fe_Ajx_Ajax {
 		if ( !$instance_id || $instance_id !== $this->instance_id ) {
 			return;
 		}
+
+		check_ajax_referer( 'fe-ajx', 'nonce' );
+
 		$step_slug = self::get_post_value( 'step' );
 
 		require_once( 'fe-ajx-ajax-steps-class.php' );
