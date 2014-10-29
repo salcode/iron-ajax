@@ -17,9 +17,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 include( 'fe-ajax/fe-ajx-class.php' );
 
+/* instantiate default instance of Fe_Ajx
+ * additional instances can be declared elsewhere
+ * e.g. mu-plugins, a plugin, functions.php
+ */
 new Fe_Ajx( array(
 	'instance_id' => 'Iron Ajax',
-) );
-new Fe_Ajx( array(
-	'instance_id' => 'SAL fE ajax Ex 2',
 ) );
