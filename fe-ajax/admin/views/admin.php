@@ -3,7 +3,26 @@
 
 	<?php do_action( 'fe_ajx_template_before', $instance_id ); ?>
 
-	<p><input id="fe-data-process-start-button" type="submit" class="button hide-if-no-js" name="fe-data-process" id="fe-data-process" value="<?php _e( 'Start Processing Data', 'iron-ajax' ); ?> "></p>
+	<p>
+		<input id="fe-data-process-start-button" type="submit"
+			class="button hide-if-no-js" name="fe-data-process"
+			id="fe-data-process" value="<?php _e( 'Start Processing Data', 'iron-ajax' ); ?> ">
+
+		<!--
+		<input id="fe-data-process-stop-button" type="submit"
+			class="button hide-if-no-js" name="fe-data-stop"
+			id="fe-data-stop" value="<?php _e( 'Stop Processing Data', 'iron-ajax' ); ?> ">
+
+		<input id="fe-data-process-pause-button" type="submit"
+			class="button hide-if-no-js" name="fe-data-pause"
+			id="fe-data-pause" value="<?php _e( 'Pause Processing Data', 'iron-ajax' ); ?> ">
+
+		<input id="fe-data-process-resume-button" type="submit"
+			class="button hide-if-no-js" name="fe-data-resume"
+			id="fe-data-resume" value="<?php _e( 'Resume Processing Data', 'iron-ajax' ); ?> ">
+		-->
+
+	</p>
 
 	<noscript><p><em><?php _e( 'You must enable Javascript in order to proceed!', 'iron-ajax' ) ?></em></p></noscript>
 	<div id="fe-data-process-progressbar"></div>
