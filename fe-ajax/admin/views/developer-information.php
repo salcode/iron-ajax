@@ -15,19 +15,47 @@
 			<td><pre>fe_ajx_<?php echo $instance_slug ?>_process</pre></td>
 			<td>
 				Filter to modify the returned object when an item is processed.
-				This hook is where you want to add your custom processing code.  Default is
-<pre>
-array(
-	'success' => true,
-	'index'   => $index,
-	'persist' => array(),
-)
-</pre>
+				This hook is where you want to add your custom processing code.
 				<h4>Example</h4>
+<pre>
+add_filter(
+	'fe_ajx_<?php echo $instance_slug; ?>_process',
+	'examp_iajx_process',
+	10,
+	3
+);
+/**
+ * Process a single entry in Iron Ajax
+ *
+ * @param associative array $response creates JSON
+ *     object to pass back to client in Ajax response
+ *     default:
+ *       array(
+ *         'success' => true, (bool)
+ *         'index'   => $index, (integer)
+ *         'persist' => array(), (associative array)
+ *       )
+ *    $response['persist'] is an empty array that can be
+ *       used to persist values across process calls
+ *       (and across Ajax calls)
+ * @param integer $index position is items to process,
+ *     indenticial to $response['index']
+ * @param associative array $args used to create a value
+ *     used throughout a batch process,
+ *     e.g. open a csv for reading
+ *
+ * @return associative array Amended $response
+ */
+function examp_iajx_process( $response, $index, $args ) {
+
+	// perform processing on item in position $index
+	my_function_process_one_item( $index );
+
+	return $response;
+}
+</pre>
 			</td>
 		</tr>
-
-
 		<tr class="<?php echo ( $alt++%2 ? 'alternate' : '' ); ?>">
 			<td><pre>fe_ajx_<?php echo $instance_slug ?>_entries_count</pre></td>
 			<td>
@@ -39,7 +67,8 @@ add_filter(
 	'examp_iajx_entries_count'
 );
 function examp_iajx_entries_count( $count ) {
-	return 1000;
+	$entries_count = 1000;
+	return $entries_count;
 }
 </pre>
 
