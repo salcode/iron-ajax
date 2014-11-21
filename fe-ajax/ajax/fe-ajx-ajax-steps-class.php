@@ -27,7 +27,7 @@ class Fe_Ajx_Ajax_Steps {
 		);
 	}
 
-	public function process( $index, $persist = array() ) {
+	public function process( $index, $persist = array(), $args = array() ) {
 
 		return apply_filters( "fe_ajx_{$this->instance_slug}_process",
 			array(
@@ -36,12 +36,16 @@ class Fe_Ajx_Ajax_Steps {
 				'persist' => $persist,
 			),
 			$index,
-			$persist
+			$args
 		);
 	}
 
 	public function batchprocess() {
 		$results = array();
+
+		// $batch_args can be used to perform an operation for the entire batch
+		// e.g. open a csv for reading
+		$batch_args = apply_filters( "fe_ajax_{$this->instance_slug}_batch_args", array() );
 
 		$items_being_process = Fe_Ajx_Ajax::get_post_value( 'itemsBeingProcessed' );
 
@@ -56,7 +60,7 @@ class Fe_Ajx_Ajax_Steps {
 		$persist = Fe_Ajx_Ajax::get_post_value( 'persist', array() );
 
 		foreach ( $items_being_process as $index ) {
-			$results[$index] = $this->process( $index, $persist );
+			$results[$index] = $this->process( $index, $persist, $batch_args );
 			$persist = $results[$index]['persist'];
 		}
 		$data = array(
