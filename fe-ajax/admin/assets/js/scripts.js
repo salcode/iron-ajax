@@ -7,7 +7,8 @@ jQuery(document).ready( function($) {
 		itemsBeingProcessed = [],
 		ajaxUrl = ajaxurl,
 		persist, // variable to maintain state between calls
-		$domStatusCounter;
+		$domStatusCounter,
+		$notificationContainer = $('#fe-data-process-notifications');
 
 	$('#fe-data-process-start-button').on( 'click', function(e) {
 		var data = {
@@ -39,9 +40,16 @@ jQuery(document).ready( function($) {
 		processNext();
 	}
 
+	function addNotification( notification ) {
+		$notificationContainer.prepend( '<div class="fe-ajax-notification">' + notification + '</div>' );
+	}
+
 	function ajaxBatchSuccess( data, textStatus, jqXHR ) {
 		var lastIndex;
 		$.each( data.results, function( key, value ) {
+			if ( data.results[key]['notification'] ) {
+				addNotification( data.results[key]['notification'] );
+			}
 			lastIndex = key;
 		} );
 

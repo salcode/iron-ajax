@@ -31,6 +31,8 @@
 		Processing <span id="fe-data-process-counter">0</span> out of <span id="fe-data-process-total">many</span>
 	</p>
 
+	<div id="fe-data-process-notifications"></div>
+
 	<?php do_action( "fe_ajx_{$instance_slug}_template_after",
 		$instance_id,
 		$instance_slug
