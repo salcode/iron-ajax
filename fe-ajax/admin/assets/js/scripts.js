@@ -5,8 +5,6 @@ jQuery(document).ready( function($) {
 		itemIndex = 0, // overriden in AjaxInitSuccess
 		batchSize = 1, // overridden in AjaxInitSuccess
 		itemsBeingProcessed = [],
-		itemsCompleted = [],
-		itemsFailed = [],
 		ajaxUrl = ajaxurl,
 		persist, // variable to maintain state between calls
 		$domStatusCounter;
@@ -44,11 +42,6 @@ jQuery(document).ready( function($) {
 	function ajaxBatchSuccess( data, textStatus, jqXHR ) {
 		var lastIndex;
 		$.each( data.results, function( key, value ) {
-			if ( 'success' === value ) {
-				itemsCompleted.push( key );
-			} else if ( 'failure' === value ) {
-				itemsFailed.push( key );
-			}
 			lastIndex = key;
 		} );
 
